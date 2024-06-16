@@ -1,0 +1,106 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.content {
+    height: 200vh; /* Make the content tall enough to scroll */
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#con{
+    font-weight: 30px;
+    font-size: medium;
+}
+.dummy-content {
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin: 20px;
+    background-color: #ccc;
+    border: 1px solid #aaa;
+}
+
+.footer {
+    background-color: #000;
+    color: #fff;
+    width: 100%;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.reveal-container {
+    position: relative;
+    font-size: 24px;
+    font-weight: bold;
+    overflow: hidden;
+    height: 50px; /* Ensures proper height for the animation */
+}
+
+.reveal {
+    position: relative;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-to-strike, .text-to-reveal {
+    margin: 0;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    transition: transform 1s, opacity 1s;
+}
+
+.text-to-strike {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.text-to-reveal {
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+.strike {
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background-color: red;
+    top: 50%;
+    left: -100%;
+    transition: left 1s;
+}
+
+.reveal.show .text-to-strike {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+.reveal.show .text-to-reveal {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.reveal.show .strike {
+    left: 0; /* Fix the position to ensure the strike is visible */
+    animation: strikeAnim 1s forwards;
+}
+
+@keyframes strikeAnim {
+    from {
+        left: -100%;
+    }
+    to {
+        left: 100%;
+    }
+}
